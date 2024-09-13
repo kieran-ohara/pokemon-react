@@ -6,7 +6,8 @@ async function fetchPokemon(id) {
   return {
     name: data.name,
     number: data.id,
-    types: data.types.map(type => type.type.name).join(', ')
+    types: data.types.map(type => type.type.name).join(', '),
+    image: data.sprites.front_default
   };
 }
 
@@ -26,8 +27,19 @@ export default function Pokemon({ id }) {
   return (
     <div>
       <h2>{pokemon.name}</h2>
+      <img src={pokemon.image} alt={pokemon.name} />
       <p>Number: {pokemon.number}</p>
       <p>Type(s): {pokemon.types}</p>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { id } = context.params;
+  try {
+    const pokemon = await fetchPokemon(id);
+    return { props: { pokemon } };
+  } catch (error) {
+    return { props: { error: error.message } };
+  }
 }

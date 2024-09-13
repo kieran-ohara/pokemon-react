@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
-import Pokemon from '../components/Pokemon';
 
 export default function Home() {
   return (
@@ -17,16 +16,30 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Here's information about Pikachu:
+          Enter a Pokemon ID to see its details:
         </p>
 
-        <div className={styles.pokemonCard}>
-          <Pokemon id={25} />
+        <div className={styles.grid}>
+          <Link href="/pokemon/25" className={styles.card}>
+            <h3>Pikachu &rarr;</h3>
+            <p>View details for Pikachu (ID: 25)</p>
+          </Link>
+
+          <Link href="/pokemon/1" className={styles.card}>
+            <h3>Bulbasaur &rarr;</h3>
+            <p>View details for Bulbasaur (ID: 1)</p>
+          </Link>
+
+          <Link href="/pokemon/4" className={styles.card}>
+            <h3>Charmander &rarr;</h3>
+            <p>View details for Charmander (ID: 4)</p>
+          </Link>
+
+          <Link href="/pokemon/7" className={styles.card}>
+            <h3>Squirtle &rarr;</h3>
+            <p>View details for Squirtle (ID: 7)</p>
+          </Link>
         </div>
-
-        <p className={styles.description}>
-          <Link href="/posts/first-post">Go to first post</Link>
-        </p>
       </main>
 
       <footer>
