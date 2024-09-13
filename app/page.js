@@ -10,28 +10,13 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Enter a Pokemon ID to see its details:
+          Click below to enter the Pokedex:
         </p>
 
         <div className={styles.grid}>
-          <Link href="/pokemon/25" className={styles.card}>
-            <h3>Pikachu &rarr;</h3>
-            <p>View details for Pikachu (ID: 25)</p>
-          </Link>
-
-          <Link href="/pokemon/1" className={styles.card}>
-            <h3>Bulbasaur &rarr;</h3>
-            <p>View details for Bulbasaur (ID: 1)</p>
-          </Link>
-
-          <Link href="/pokemon/4" className={styles.card}>
-            <h3>Charmander &rarr;</h3>
-            <p>View details for Charmander (ID: 4)</p>
-          </Link>
-
-          <Link href="/pokemon/7" className={styles.card}>
-            <h3>Squirtle &rarr;</h3>
-            <p>View details for Squirtle (ID: 7)</p>
+          <Link href="/pokedex" className={styles.card}>
+            <h3>Enter Pokedex &rarr;</h3>
+            <p>View the Pokedex with Pokemon details</p>
           </Link>
         </div>
       </main>
