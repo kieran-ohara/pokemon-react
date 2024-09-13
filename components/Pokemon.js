@@ -1,4 +1,5 @@
 import { use } from 'react';
+import { likePokemon } from '../app/actions';
 
 async function fetchPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -20,6 +21,9 @@ export default function Pokemon({ id }) {
       <img src={pokemon.image} alt={pokemon.name} />
       <p>Number: {pokemon.number}</p>
       <p>Type(s): {pokemon.types}</p>
+      <form action={likePokemon.bind(null, id)}>
+        <button type="submit">Like this Pokemon</button>
+      </form>
     </div>
   );
 }
