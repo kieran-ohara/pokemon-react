@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { use } from 'react';
 
 async function fetchPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -12,17 +12,7 @@ async function fetchPokemon(id) {
 }
 
 export default function Pokemon({ id }) {
-  const [pokemon, setPokemon] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetchPokemon(id)
-      .then(setPokemon)
-      .catch(err => setError(err.message));
-  }, [id]);
-
-  if (error) return <div>Error: {error}</div>;
-  if (!pokemon) return <div>Loading...</div>;
+  const pokemon = use(fetchPokemon(id));
 
   return (
     <div>
@@ -32,14 +22,4 @@ export default function Pokemon({ id }) {
       <p>Type(s): {pokemon.types}</p>
     </div>
   );
-}
-
-export async function getServerSideProps(context) {
-  const { id } = context.params;
-  try {
-    const pokemon = await fetchPokemon(id);
-    return { props: { pokemon } };
-  } catch (error) {
-    return { props: { error: error.message } };
-  }
 }
