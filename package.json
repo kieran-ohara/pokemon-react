@@ -17,12 +17,20 @@
     "eslint-config-next": "13.4.5",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
+    "msw": "2.4.5",
     "prettier": "^2.8.8"
   },
   "lint-staged": {
-    "*.js": ["prettier --write"]
+    "*.js": [
+      "prettier --write"
+    ]
   },
   "engines": {
     "node": ">=18"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
